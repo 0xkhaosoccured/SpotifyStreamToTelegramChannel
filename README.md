@@ -1,3 +1,7 @@
+## In a nutshell
+
+![Telegram Preview](TelegramFunc/Images/preview.jpg)
+
 ## Installation
 
 1. [Install Python 3.12+](https://www.python.org/downloads/release/python-3121/)
