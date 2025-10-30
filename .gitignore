@@ -5,6 +5,7 @@ __pycache__/
 .env
 # C extensions
 *.so
+TelegramFunc/Images/AlbumCovers/*.jpg
 
 # Distribution / packaging
 .Python
