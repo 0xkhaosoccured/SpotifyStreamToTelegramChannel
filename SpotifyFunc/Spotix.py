@@ -27,18 +27,18 @@ def download_album_cover(playbackinfo, current_album_info) -> None:
 async def spotifyMonitor(spotify_obj, bot) -> None:
     try:
         while True:
-            await asyncio.sleep(10)
+            await asyncio.sleep(TIMER_C)
             playback_info = spotify_obj.current_playback()
             if playback_info and playback_info['is_playing']:
-                print("CURRENT STATUS --- PLAYING")
+                print("[PLAYING]")
                 await update_telegram_post(bot, playback_info, "Images/AlbumCovers/AlbumCover.jpg", status=Status.PLAYING)
             elif playback_info and not playback_info['is_playing']:
-                print("CURRENT STATUS --- PAUSED")
+                print("[PAUSED]")
                 pass
             else:
-                print("CURRENT STATUS --- STOPPED")
+                print("[STOPPED]")
                 await update_telegram_post(bot, playback_info, "Images/AlbumCovers/AlbumCover.jpg", status=Status.STOPPED)
 
     except Exception as e:
-        print(e)
-        await asyncio.sleep(1)
+        print("Error inside [SPOTIFYMONITOR] function: " + str(e))
+        await asyncio.sleep(5)

@@ -45,9 +45,9 @@ async def update_telegram_post(bot: Bot, playback_info, cover_path, status) -> N
 
                 CHANNEL_MESSAGE_ID = sent_message.message_id
                 CURRENT_TRACK = track['id']
-                print(f'Пост успешно отредактирован: {sent_message.message_id}')
+                print(f'[TELEGRAM] Post succesfully changed: {sent_message.message_id}')
             else:
-                print("Пост не был найден")
+                print("[TELEGRAM] Post not found")
         except Exception as e:
             print(e)
     else:
@@ -61,7 +61,7 @@ async def update_telegram_post(bot: Bot, playback_info, cover_path, status) -> N
         )
         CHANNEL_MESSAGE_ID = sent_message.message_id
         CURRENT_TRACK = None
-        print(f'Пост успешно аннулирован: {sent_message.message_id}')
+        print(f'[TELEGRAM] Spotify disabled: {sent_message.message_id}')
 
 
 

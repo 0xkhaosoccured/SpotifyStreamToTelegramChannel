@@ -20,6 +20,8 @@ load_dotenv()
 CFG_CHANNEL_ID = int(os.getenv("CHANNEL_ID"))
 CFG_CHANNEL_MESSAGE_ID = int(os.getenv("CHANNEL_MESSAGE_ID"))
 
+TIMER_C = int(os.getenv("TIMER_C"))
+
 spotify = spotipy.Spotify(auth_manager=SpotifyOAuth(
     client_id=os.getenv("CLIENT_ID"),
     client_secret=os.getenv("CLIENT_SECRET"),
