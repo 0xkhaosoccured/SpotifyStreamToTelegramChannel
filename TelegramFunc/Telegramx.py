@@ -28,7 +28,7 @@ async def update_telegram_post(bot: Bot, playback_info, cover_path, status) -> N
             f"\n<a href='{track['external_urls']['spotify']}'>Слушать на Spotify</a>"
         )
 
-        if status == 1:
+        if status == Status.PAUSED:
             caption_text = ("<b>PAUSED</b>\n\n" + caption_text)
 
         cover_photo = FSInputFile(cover_path)
@@ -50,7 +50,7 @@ async def update_telegram_post(bot: Bot, playback_info, cover_path, status) -> N
                 print("[TELEGRAM] Post not found")
         except Exception as e:
             print(e)
-    else:
+    elif status == Status.STOPPED:
         cover_photo = FSInputFile("Images/black.jpg")
         caption_text = ("...")
         media = InputMediaPhoto(media=cover_photo, caption=caption_text, parse_mode=ParseMode.HTML)

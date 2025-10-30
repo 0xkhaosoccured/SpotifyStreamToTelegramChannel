@@ -9,7 +9,7 @@ def download_album_cover(playbackinfo, current_album_info) -> None:
     global CURRENT_ALBUM
     track = playbackinfo['item']
     if current_album_info == CURRENT_ALBUM:
-        print("Album cover already downloaded")
+        print("[SPOTIFY] Album cover already downloaded")
         return
     album_image_link = track['album']['images'][0]['url']
     if not os.path.exists("Images"):
@@ -20,9 +20,9 @@ def download_album_cover(playbackinfo, current_album_info) -> None:
         with open(filepath, 'wb') as f:
             f.write(response.content)
         CURRENT_ALBUM = current_album_info
-        print(f"{album_image_link} downloaded")
+        print(f"[SPOTIFY] {album_image_link} downloaded")
     else:
-        print(f"unable to download {album_image_link}")
+        print(f"[SPOTIFY] Unable to download {album_image_link}")
 
 async def spotifyMonitor(spotify_obj, bot) -> None:
     try:
@@ -40,5 +40,5 @@ async def spotifyMonitor(spotify_obj, bot) -> None:
                 await update_telegram_post(bot, playback_info, "Images/AlbumCovers/AlbumCover.jpg", status=Status.STOPPED)
 
     except Exception as e:
-        print("Error inside [SPOTIFYMONITOR] function: " + str(e))
+        print("[SPOTIFY] Error inside [SPOTIFYMONITOR] function: " + str(e))
         await asyncio.sleep(5)
